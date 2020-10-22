@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import 'reusable_card_widget.dart';
+import 'menu_card_widget.dart';
 
 class MyBusinessCardScreen extends StatelessWidget {
+  _launchTelephoneNumber(String number) async {
+    final String telephoneNumber = Uri(scheme: 'tel', path: number).toString();
+    await launch(telephoneNumber);
+  }
+
+  _launchEmail(String email) async {
+    final String telephoneNumber = Uri(scheme: 'mailto', path: email).toString();
+    await launch(telephoneNumber);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,10 +64,12 @@ class MyBusinessCardScreen extends StatelessWidget {
               MenuCard(
                 title: '+55 62 99932-3252',
                 iconData: Icons.phone,
+                onPressed: () => _launchTelephoneNumber('+5562999323252'),
               ),
               MenuCard(
                 title: 'fernandojr.semrhfj@hotmail.com',
                 iconData: Icons.email,
+                onPressed: () => _launchEmail('fernandojr.semrhfj@hotmail.com'),
               ),
             ],
           ),
