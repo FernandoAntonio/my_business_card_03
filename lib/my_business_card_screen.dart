@@ -11,8 +11,8 @@ class MyBusinessCardScreen extends StatelessWidget {
   }
 
   _launchEmail(String email) async {
-    final String telephoneNumber = Uri(scheme: 'mailto', path: email).toString();
-    await launch(telephoneNumber);
+    final String mailTo = Uri(scheme: 'mailto', path: email).toString();
+    await launch(mailTo);
   }
 
   @override
@@ -46,7 +46,11 @@ class MyBusinessCardScreen extends StatelessWidget {
               GradientText(
                 'FLUTTER DEVELOPER',
                 gradient: LinearGradient(
-                  colors: [Colors.teal[300], Colors.teal[200], Colors.teal[100]],
+                  colors: [
+                    Colors.teal[300],
+                    Colors.teal[200],
+                    Colors.teal[100]
+                  ],
                 ),
                 style: TextStyle(
                   fontFamily: 'SourceSansPro',
