@@ -63,10 +63,7 @@ class MyBusinessCardScreen extends StatelessWidget {
               ),
               SizedBox(
                 height: 16.0,
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.4,
+                width: MediaQuery.of(context).size.width * 0.4,
                 child: Divider(color: kTeal200),
               ),
               SizedBox(height: 32.0),
