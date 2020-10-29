@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:mi_card/constants.dart';
 
 class MenuCard extends StatelessWidget {
   MenuCard({
@@ -17,9 +18,8 @@ class MenuCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed != null ? onPressed : () {},
       child: GradientCard(
-        gradient:
-            LinearGradient(colors: [Colors.grey[300], Colors.grey[200], Colors.white]),
-        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+        gradient: LinearGradient(colors: [kGrey300, kGrey200, kWhite]),
+        margin: EdgeInsets.symmetric(horizontal: 32.0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.0)),
         elevation: 5.0,
         child: ListTile(
@@ -27,7 +27,7 @@ class MenuCard extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
-                fontFamily: 'SourceSansPro', color: Colors.teal[900], fontSize: 17.0),
+                fontFamily: 'SourceSansPro', color: kTeal800, fontSize: 17.0),
           ),
         ),
       ),

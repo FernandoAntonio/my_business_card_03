@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:mi_card/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
 import 'menu_card_widget.dart';
 
 class MyBusinessCardScreen extends StatelessWidget {
-  _launchTelephoneNumber(String number) async {
-    final String telephoneNumber = Uri(scheme: 'tel', path: number).toString();
-    await launch(telephoneNumber);
+  _launchWhatsapp(String number) async {
+    final String wpp = WhatsAppUnilink(
+            phoneNumber: number, text: 'Olá, vi seu perfil no LinkedIn/GitHub')
+        .toString();
+    await launch(wpp);
   }
 
   _launchEmail(String email) async {
@@ -24,7 +28,7 @@ class MyBusinessCardScreen extends StatelessWidget {
           height: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.teal[800], Colors.teal[700], Colors.teal[600]],
+              colors: [kTeal800, kTeal700, kTeal600],
             ),
           ),
           child: Column(
@@ -34,6 +38,7 @@ class MyBusinessCardScreen extends StatelessWidget {
                 backgroundImage: AssetImage('images/me.jpg'),
                 radius: 50.0,
               ),
+              SizedBox(height: 16.0),
               Text(
                 'Fernando Antônio',
                 style: TextStyle(
@@ -43,14 +48,11 @@ class MyBusinessCardScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(height: 8.0),
               GradientText(
                 'FLUTTER DEVELOPER',
                 gradient: LinearGradient(
-                  colors: [
-                    Colors.teal[300],
-                    Colors.teal[200],
-                    Colors.teal[100]
-                  ],
+                  colors: [kTeal300, kTeal200, kTeal100],
                 ),
                 style: TextStyle(
                   fontFamily: 'SourceSansPro',
@@ -60,20 +62,24 @@ class MyBusinessCardScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                  height: 15.0,
-                  width: 150.0,
-                  child: Divider(
-                    color: Colors.teal[200],
-                  )),
-              MenuCard(
-                title: '+55 62 99932-3252',
-                iconData: Icons.phone,
-                onPressed: () => _launchTelephoneNumber('+5562999323252'),
+                height: 16.0,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.4,
+                child: Divider(color: kTeal200),
               ),
+              SizedBox(height: 32.0),
               MenuCard(
-                title: 'fernandojr.semrhfj@hotmail.com',
+                title: kMobileNumber,
+                iconData: Icons.phone,
+                onPressed: () => _launchWhatsapp(kMobileNumber),
+              ),
+              SizedBox(height: 16.0),
+              MenuCard(
+                title: kEmail,
                 iconData: Icons.email,
-                onPressed: () => _launchEmail('fernandojr.semrhfj@hotmail.com'),
+                onPressed: () => _launchEmail(kEmail),
               ),
             ],
           ),
